@@ -568,18 +568,12 @@ function InstagramFeed() {
 
       <div className="mt-14 grid grid-cols-2 md:grid-cols-4">
         {images.map((src, i) => (
-          <a
+          <div
             key={i}
-            href={BRAND.instagram}
-            target="_blank"
-            rel="noreferrer"
             className="group relative aspect-square overflow-hidden"
           >
             <img src={src} alt="Instagram post" loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.05]" />
-            <div className="absolute inset-0 flex items-center justify-center bg-rose/0 transition-colors group-hover:bg-rose/30">
-              <Instagram className="h-7 w-7 text-white opacity-0 transition-opacity group-hover:opacity-100" />
-            </div>
-          </a>
+          </div>
         ))}
       </div>
 
