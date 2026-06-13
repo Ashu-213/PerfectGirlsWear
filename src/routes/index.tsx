@@ -30,7 +30,7 @@ import cTop from "@/assets/c-top.jpg";
 import cJeans from "@/assets/c-jeans.jpg";
 import cPalazzo from "@/assets/c-palazzo.jpg";
 import cDupatta from "@/assets/c-dupatta.jpg";
-import cAccessories from "@/assets/c-accessories.jpg";
+
 import oFestival from "@/assets/o-festival.jpg";
 import oWedding from "@/assets/o-wedding.jpg";
 import oParty from "@/assets/o-party.jpg";
@@ -38,7 +38,7 @@ import oCasual from "@/assets/o-casual.jpg";
 import oOffice from "@/assets/o-office.jpg";
 import sEntrance from "@/assets/s-entrance.jpg";
 import sGowns from "@/assets/s-gowns.jpg";
-import sAccessories from "@/assets/s-accessories.jpg";
+
 import ig1 from "@/assets/ig-1.jpg";
 import ig2 from "@/assets/ig-2.jpg";
 import ig3 from "@/assets/ig-3.jpg";
@@ -88,7 +88,7 @@ function Home() {
 function Marquee() {
   const words = [
     "Kurti", "Gowns", "Lehenga", "Palazzo", "Dupatta",
-    "Tops", "Jeans", "Shirts", "Leggings", "Accessories",
+    "Tops", "Jeans", "Shirts", "Leggings",
     "Festival Wear", "Wedding Edit", "New Arrivals Weekly",
   ];
   const loop = [...words, ...words];
@@ -234,7 +234,6 @@ const collections = [
   { name: "Dupatta", hindi: "दुपट्टा", img: cDupatta },
   { name: "Shirts", hindi: "शर्ट", img: cTop },
   { name: "Leggings", hindi: "लेगिंग्स", img: cPalazzo },
-  { name: "Accessories", hindi: "एक्सेसरीज़", img: cAccessories },
 ];
 
 function SectionHeader({
@@ -283,11 +282,8 @@ function Collections() {
 
         <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {collections.map((c) => (
-            <a
+            <div
               key={c.name}
-              href={BRAND.whatsapp}
-              target="_blank"
-              rel="noreferrer"
               className="group relative aspect-[3/4] overflow-hidden rounded-2xl bg-white transition-all duration-500 hover:-translate-y-2 hover:shadow-[var(--shadow-card-hover)]"
             >
               <img
@@ -307,12 +303,8 @@ function Collections() {
                 <h3 className="font-display text-2xl font-semibold text-white mt-1">
                   {c.name}
                 </h3>
-                <div className="mt-3 inline-flex items-center gap-2 text-xs uppercase tracking-wider text-white opacity-0 group-hover:opacity-100 transition-opacity">
-                  View Collection
-                  <ArrowRight className="h-3 w-3" />
-                </div>
               </div>
-            </a>
+            </div>
           ))}
         </div>
       </div>
@@ -475,7 +467,6 @@ const showroom = [
   { img: sEntrance, caption: "Entrance View" },
   { img: boutiqueInterior, caption: "Kurti Collection" },
   { img: sGowns, caption: "Gown Display" },
-  { img: sAccessories, caption: "Accessories Corner" },
 ];
 
 function Showroom() {
@@ -756,7 +747,7 @@ function Footer() {
           <div>
             <p className="text-[11px] uppercase tracking-[0.15em] text-rose">Collections</p>
             <ul className="mt-4 space-y-2 text-sm">
-              {["Kurti", "Gowns", "Tops", "Palazzo", "Dupatta", "Accessories"].map((l) => (
+              {["Kurti", "Gowns", "Tops", "Palazzo", "Dupatta", "Jeans"].map((l) => (
                 <li key={l} className="hover:text-white transition">
                   {l}
                 </li>
