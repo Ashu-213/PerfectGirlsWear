@@ -19,6 +19,7 @@ import {
 import { Nav } from "@/components/nav";
 import { BRAND } from "@/components/brand";
 import { FloralCluster, Petal, PetalField } from "@/components/petals";
+import { useScrollReveal } from "@/hooks/use-reveal";
 
 import logo from "@/assets/logo.png.asset.json";
 import heroModels from "@/assets/hero-models.jpg";
@@ -64,10 +65,12 @@ export const Route = createFileRoute("/")({
 });
 
 function Home() {
+  useScrollReveal();
   return (
     <div id="top" className="min-h-screen overflow-x-hidden bg-cream text-charcoal">
       <Nav />
       <Hero />
+      <Marquee />
       <Collections />
       <About />
       <Occasions />
@@ -77,6 +80,28 @@ function Home() {
       <InstagramFeed />
       <Contact />
       <Footer />
+    </div>
+  );
+}
+
+/* ---------------- MARQUEE ---------------- */
+function Marquee() {
+  const words = [
+    "Kurti", "Gowns", "Lehenga", "Palazzo", "Dupatta",
+    "Tops", "Jeans", "Shirts", "Leggings", "Accessories",
+    "Festival Wear", "Wedding Edit", "New Arrivals Weekly",
+  ];
+  const loop = [...words, ...words];
+  return (
+    <div className="relative border-y border-charcoal/10 bg-blush/40 py-6 overflow-hidden">
+      <div className="marquee-track flex w-max gap-10 whitespace-nowrap">
+        {loop.map((w, i) => (
+          <span key={i} className="inline-flex items-center gap-10">
+            <span className="font-display text-2xl md:text-3xl text-charcoal">{w}</span>
+            <Petal size={14} />
+          </span>
+        ))}
+      </div>
     </div>
   );
 }
