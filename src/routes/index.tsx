@@ -25,8 +25,8 @@ import { LuxuryCursor } from "@/components/cursor";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/motion";
 import { useLenis } from "@/hooks/use-lenis";
 
-import logo from "@/assets/logo.png.asset.json";
-import heroModels from "@/assets/hero-models.jpg";
+import logo from "@/assets/logo.png";
+import heroModels from "@/assets/hero-image.png";
 import boutiqueInterior from "@/assets/boutique-interior.jpg";
 import cKurti from "@/assets/c-kurti.jpg";
 import cGown from "@/assets/c-gown.jpg";
@@ -223,41 +223,43 @@ function Hero() {
           ))}
         </motion.div>
 
-        {/* Right: editorial photo with parallax */}
-        <motion.div
-          className="lg:col-span-6 relative"
-          style={{ y: modelsY }}
-          initial={{ opacity: 0, scale: 0.96 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.2, ease: EASE, delay: 0.2 }}
-        >
-          <div className="relative aspect-[3/4] w-full overflow-hidden rounded-[24px] shadow-[var(--shadow-luxury)] image-frame">
-            <motion.img
-              src={heroModels}
-              alt="Two women in modern Indian fashion outfits walking with shopping bags"
-              className="h-full w-full object-cover"
-              style={{ scale: modelsScale }}
-              width={1080}
-              height={1440}
-              fetchPriority="high"
-            />
-            <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-charcoal/40 to-transparent" />
-          </div>
-
-          {/* floating badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: EASE, delay: 0.9 }}
-            className="absolute -left-2 -bottom-5 sm:-left-10 sm:-bottom-8 bg-charcoal text-white rounded-2xl px-5 py-3 sm:px-6 sm:py-4 shadow-2xl border border-rose/40 max-w-[240px]"
-          >
-            <p className="font-editorial text-lg leading-tight">
-              <span className="text-rose">नया</span> कलेक्शन
-            </p>
-            <p className="text-xs uppercase tracking-wider text-white/70 mt-1">हमेशा उपलब्ध</p>
-          </motion.div>
-        </motion.div>
+        {/* Right side is kept empty for the background image on desktop */}
+        <div className="lg:col-span-6 hidden lg:block" />
       </div>
+
+      {/* Background Hero Image */}
+      <div className="absolute right-0 top-0 bottom-0 w-full lg:w-[50vw] pointer-events-none overflow-hidden z-0 select-none">
+        <motion.img
+          src={heroModels}
+          alt="Models in modern Indian fashion outfits"
+          className="h-full w-full object-cover object-center mix-blend-multiply"
+          style={{ scale: modelsScale, y: modelsY }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.2, ease: EASE, delay: 0.2 }}
+          fetchPriority="high"
+        />
+        {/* Soft gradients to fade the image edges into the cream background */}
+        <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[#f7efe9] to-transparent hidden lg:block" />
+        <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#f7efe9] to-transparent hidden lg:block" />
+        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#f7efe9] to-transparent hidden lg:block" />
+      </div>
+
+      {/* Mobile background overlay for text readability */}
+      <div className="absolute inset-0 bg-[#f7efe9]/75 lg:hidden z-0 pointer-events-none" />
+
+      {/* floating badge */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: EASE, delay: 0.9 }}
+        className="absolute right-4 bottom-4 sm:right-10 sm:bottom-8 bg-charcoal text-white rounded-2xl px-5 py-3 sm:px-6 sm:py-4 shadow-2xl border border-rose/40 max-w-[240px] z-10"
+      >
+        <p className="font-editorial text-lg leading-tight">
+          <span className="text-rose">नया</span> कलेक्शन
+        </p>
+        <p className="text-xs uppercase tracking-wider text-white/70 mt-1">हमेशा उपलब्ध</p>
+      </motion.div>
     </section>
   );
 }
@@ -655,7 +657,7 @@ function Contact() {
         <Reveal className="mx-auto max-w-[920px]">
           <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-6 sm:p-8 backdrop-blur-2xl md:p-14 shadow-[inset_0_1px_0_rgba(255,255,255,0.05),0_40px_80px_rgba(0,0,0,0.3)]">
             <div className="text-center">
-              <img src={logo.url} alt="Perfect Girls Wear" className="mx-auto h-14 w-14 rounded-full" />
+              <img src={logo} alt="Perfect Girls Wear" className="mx-auto h-14 w-14 rounded-full" />
               <p className="eyebrow mt-4 text-white/60">{BRAND.tagline}</p>
               <h2
                 className="font-display font-bold text-white mt-6 leading-tight"
@@ -754,7 +756,7 @@ function Footer() {
         <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-4">
           <div>
             <div className="flex items-center gap-3">
-              <img src={logo.url} alt="" className="h-12 w-12 rounded-full" />
+              <img src={logo} alt="" className="h-12 w-12 rounded-full" />
               <div>
                 <p className="font-display text-lg text-white">Perfect</p>
                 <p className="font-editorial text-rose text-sm -mt-1">Girls Wear</p>

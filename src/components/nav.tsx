@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Menu, MessageCircle, Phone, X } from "lucide-react";
-import logo from "@/assets/logo.png.asset.json";
+import logo from "@/assets/logo.png";
 import { BRAND } from "./brand";
 
 const links = [
@@ -25,15 +25,14 @@ export function Nav() {
   return (
     <>
       <header
-        className={`fixed top-0 z-50 w-full transition-all duration-500 ${
-          scrolled
+        className={`fixed top-0 z-50 w-full transition-all duration-500 ${scrolled
             ? "backdrop-blur-xl bg-[rgba(247,239,233,0.92)] shadow-[0_1px_0_rgba(0,0,0,0.05)]"
             : "bg-transparent"
-        }`}
+          }`}
       >
         <div className="container-editorial flex h-[72px] items-center justify-between">
           <a href="#top" className="flex items-center gap-2">
-            <img src={logo.url} alt="Perfect Girls Wear" className="h-11 w-11 rounded-full object-cover" />
+            <img src={logo} alt="Perfect Girls Wear" className="h-11 w-11 rounded-full object-cover" />
             <span className="hidden sm:flex flex-col leading-tight">
               <span className="font-display text-lg text-charcoal">Perfect</span>
               <span className="font-editorial text-xs text-rose -mt-1">Girls Wear</span>
@@ -77,7 +76,7 @@ export function Nav() {
         <div className="fixed inset-0 z-[60] bg-cream flex flex-col">
           <div className="container-editorial flex h-[72px] items-center justify-between">
             <div className="flex items-center gap-2">
-              <img src={logo.url} alt="" className="h-10 w-10 rounded-full" />
+              <img src={logo} alt="" className="h-10 w-10 rounded-full" />
               <span className="font-display text-lg text-charcoal">Perfect</span>
             </div>
             <button
